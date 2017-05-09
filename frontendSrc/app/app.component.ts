@@ -1,6 +1,6 @@
 import { Component,AfterViewInit,ViewContainerRef,PipeTransform ,Pipe} from '@angular/core';
 import {UsersService} from './services/users.service';
-import {User} from './model/User';
+import {User} from './model/user';
 import {Router,NavigationEnd} from "@angular/router";
 
 @Component({

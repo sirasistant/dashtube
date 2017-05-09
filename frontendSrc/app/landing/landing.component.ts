@@ -15,6 +15,7 @@ export class LandingComponent implements OnInit {
   width = 0;
 
   videos:Video[];
+  selectedVideo:Video;
 
   constructor(private videosService: VideosService, private router: Router) { }
 
