@@ -1,5 +1,6 @@
 ﻿var express = require("express"),
     app = express(),
+    path = require("path"),
     bodyParser = require("body-parser"),
     services = require("./utils/services.js"),
     winston = require('winston');
@@ -14,6 +15,11 @@ services.init().then(() => {
     app.use(bodyParser.json({ limit: '50mb' }));
 
     app.use(services.session.store);
+    app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,Content-Range,X-Content-Range,Range");
+  next();
+});
 
     if (services.config.logLevel == "debug") {
         app.use((req, res, next) => {

@@ -36,7 +36,7 @@ exports.regUser = function (req, res, next) {
             slug: slug(req.body.alias.toLowerCase()),
             profilePic: image ? image.filename : undefined,
             email: email,
-            name: name,
+            name: req.body.name,
             pwd: saltedPassword,
             hasPassword: true,
         });

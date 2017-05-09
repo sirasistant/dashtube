@@ -69,15 +69,13 @@ exports.rmdirAsync = function (path) {
 
 exports.writeFile = function (data, path) {
     return new Promise(function (resolve, reject) {
-        exports.ensureExists(path).then(function () {
-            fs.writeFile(data, path, function (err) {
+            fs.writeFile(path, data, function (err) {
                 if (err) return reject(err);
                 else return resolve();
             })
         }, function (err) {
             if (err) return reject(err);
         });
-    })
 }
 
 exports.access = function(path) {
@@ -85,6 +83,15 @@ exports.access = function(path) {
         fs.access(path, (err) => {
             if(err) return reject(err);
             else return resolve();
+        })
+    });
+}
+
+exports.read = function(path){
+     return new Promise((resolve, reject) =>{
+        fs.readFile(path, (err,data) => {
+            if(err) return reject(err);
+            else return resolve(data);
         })
     });
 }

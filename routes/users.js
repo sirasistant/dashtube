@@ -19,6 +19,7 @@ router.route('/changepassword').post(userAccountController.changePassword);
 router.route('/update').post(upload.fields([{ name: "image" }]), userAccountController.updateProfile);
 router.route('/fbmerge').post(userAccountController.FBMerge);
 router.route('/fbunmerge').post(userAccountController.FBUnMerge);
+router.route('/:user').get(userController.getUser);
 
 
 module.exports = router;

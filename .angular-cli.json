@@ -23,6 +23,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.css"
       ],
       "scripts": [
+        "../lib/dash.all.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

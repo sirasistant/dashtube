@@ -1,1 +1,27 @@
-<h1>My first Angular app</h1>
+<div class="page">
+    <div class="container videos">
+        <div *ngFor="let video of videos; let i = index;" class="col-sm-6 col-md-4 col-md-3">
+            <div class="video" (click)="selectedVideo = video;videoModal.show()">
+                <div class="responsive-square"><img class="square-content" [src]="video.thumbnail"></div>
+                <a href="javascript:void(0)" class="one-line">{{video.name?video.name:"Unnamed"}}</a>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" bsModal #videoModal="bs-modal"  [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content"  *ngIf="selectedVideo?.mpd">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{selectedVideo.name?selectedVideo.name:"Unnamed"}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="videoModal.hide();selectedVideo=null;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <dash-player [url]="selectedVideo.mpd"></dash-player>
+      </div>
+    </div>
+  </div>
+</div>
